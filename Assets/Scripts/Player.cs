@@ -11,10 +11,12 @@ public class Player : MonoBehaviour
 
     float nextFire;
 
+    Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -24,6 +26,7 @@ public class Player : MonoBehaviour
         {
             Instantiate(bulletPrefab, shootPosition.position, transform.rotation);
             nextFire = fireRate;
+            anim.SetTrigger("Shoot");
         }
 
         if (nextFire > 0)
