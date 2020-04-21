@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetButton("Fire1") && nextFire <= 0)
         {
             Instantiate(bulletPrefab, shootPosition.position, transform.rotation);
@@ -34,4 +35,5 @@ public class Player : MonoBehaviour
             nextFire -= Time.deltaTime;
         }
     }
+
 }
