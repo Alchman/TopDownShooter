@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public int health = 100;
     public float fireRate;
     public GameObject bulletPrefab;
     public Transform shootPosition;
@@ -12,6 +13,16 @@ public class Player : MonoBehaviour
     float nextFire;
 
     Animator anim;
+
+    public void DoDamage(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()

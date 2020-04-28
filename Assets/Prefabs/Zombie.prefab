@@ -84,6 +84,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b382a6afbd4cb4d9eb412685ee306c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followDistance: 6
+  attackDistance: 2
+  attackRate: 2
+  damage: 50
 --- !u!114 &3211815795793499706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +112,7 @@ GameObject:
   - component: {fileID: 747001571785602804}
   - component: {fileID: 747001571785602803}
   - component: {fileID: 2796533658892296398}
+  - component: {fileID: 772790095}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -198,3 +203,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &772790095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747001571785602805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c8df2f365c447b45a7c32e9df4445b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

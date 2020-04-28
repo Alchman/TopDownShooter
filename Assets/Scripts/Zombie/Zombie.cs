@@ -10,7 +10,9 @@ public class Zombie : MonoBehaviour
 
     [Header("Attack config")]
     public float attackRate;
-    public float damage;
+    public int damage;
+
+    float nextAttack;
 
     enum ZombieStates
     {
@@ -49,6 +51,12 @@ public class Zombie : MonoBehaviour
 
     void UpdateState()
     {
+        if (player == null)
+        {
+            //return to start point
+            return;
+        }
+
         float distance = Vector2.Distance(transform.position, player.transform.position);
 
         switch (activeState)
@@ -70,11 +78,20 @@ public class Zombie : MonoBehaviour
             case ZombieStates.ATTACK:
                 if (distance > attackDistance)
                 {
+                    anim.SetTrigger("Move");
                     ChangeState(ZombieStates.MOVE);
                 }
                 Rotate();
-                anim.SetTrigger("Shoot");
-                Debug.Log("Trigger Shoot");
+
+                nextAttack -= Time.fixedDeltaTime;
+                if(nextAttack <= 0)
+                {
+                    anim.SetTrigger("Shoot");
+
+                    nextAttack = attackRate;
+                }
+
+
                 break;
         }
     }
@@ -90,15 +107,17 @@ public class Zombie : MonoBehaviour
                 break;
             case ZombieStates.MOVE:
                 movement.enabled = true;
-                Debug.Log("Trigger Move");
-                anim.SetTrigger("Move");
                 break;
             case ZombieStates.ATTACK:
                 movement.enabled = false;
                 movement.StopMovement();
                 break;
         }
+    }
 
+    public void DoDamageToPlayer()
+    {
+        player.DoDamage(damage);
     }
 
     void Rotate()

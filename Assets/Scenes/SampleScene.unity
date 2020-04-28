@@ -239,7 +239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.393577, y: 1.029642, z: -10}
+  m_LocalPosition: {x: -3.5511045, y: 1.029642, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -305,7 +305,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833418572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.393577, y: 1.029642, z: -10}
+  m_LocalPosition: {x: -3.5511045, y: 1.029642, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1263232361}
@@ -555,23 +555,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2060255711324504381, guid: 941ff04bdad080243a1d4d72d6905253,
         type: 3}
-      propertyPath: followDistance
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2060255711324504381, guid: 941ff04bdad080243a1d4d72d6905253,
-        type: 3}
-      propertyPath: attackDistance
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2661938859377940755, guid: 941ff04bdad080243a1d4d72d6905253,
-        type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3211815795793499706, guid: 941ff04bdad080243a1d4d72d6905253,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
+      propertyPath: damage
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 941ff04bdad080243a1d4d72d6905253, type: 3}
