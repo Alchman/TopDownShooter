@@ -126,7 +126,7 @@ public class Zombie : MonoBehaviour
         transform.up = -direction;
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, followDistance);
