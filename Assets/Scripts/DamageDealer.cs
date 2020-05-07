@@ -5,6 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class DamageDealer : MonoBehaviour
 {
-    public float damage;
+    public int damage;
 
 }

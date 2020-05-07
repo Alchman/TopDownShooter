@@ -1,9 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Zombie : MonoBehaviour
 {
+    public Action onHealthChanged = delegate { };
+
+
+    public int health = 100;
+    public int maxHealth = 100;
+
     [Header("AI config")]
     public float followDistance;
     public float attackDistance;
@@ -64,7 +71,15 @@ public class Zombie : MonoBehaviour
             case ZombieStates.STAND:
                 if (distance <= followDistance)
                 {
-                    ChangeState(ZombieStates.MOVE);
+                    LayerMask layerMask = LayerMask.GetMask("Walls");
+                    Vector2 direction = player.transform.position - transform.position;
+
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance, layerMask);
+
+                    if (hit.collider == null)
+                    {
+                        ChangeState(ZombieStates.MOVE);
+                    }
                 }
                 //check field of view
                 break;
@@ -120,10 +135,31 @@ public class Zombie : MonoBehaviour
         player.DoDamage(damage);
     }
 
+    public void DoDamage(int damage)
+    {
+        health -= damage;
+
+        onHealthChanged();
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Rotate()
     {
         Vector2 direction = player.transform.position - transform.position;
         transform.up = -direction;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        DamageDealer damageDealer = collision.GetComponent<DamageDealer>();
+        if (damageDealer != null)
+        {
+            DoDamage(damageDealer.damage);
+        }
     }
 
     private void OnDrawGizmosSelected()

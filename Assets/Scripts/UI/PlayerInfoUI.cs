@@ -15,6 +15,7 @@ public class PlayerInfoUI : MonoBehaviour
         player = FindObjectOfType<Player>();
         
         healthSlider.maxValue = player.health;
+        healthSlider.value = player.health;
         //healthSlider.maxValue = player.maxHealth;
     }
 
