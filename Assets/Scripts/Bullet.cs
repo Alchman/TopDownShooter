@@ -9,20 +9,24 @@ public class Bullet : MonoBehaviour
     Rigidbody2D rb;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnEnable()
+    {
         rb.velocity = -transform.up * speed;
     }
 
     private void OnBecameInvisible()
     {
-        Destroy(gameObject);
+        Lean.Pool.LeanPool.Despawn(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        Lean.Pool.LeanPool.Despawn(gameObject);
     }
 
 }
