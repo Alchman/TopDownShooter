@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Pathfinding;
 
 public class Zombie : MonoBehaviour
 {
+    AIPath aiPath;
+
+
     public Action onHealthChanged = delegate { };
 
 
@@ -20,6 +24,7 @@ public class Zombie : MonoBehaviour
     public float attackRate;
     public int damage;
 
+
     float nextAttack;
 
     enum ZombieStates
@@ -33,7 +38,7 @@ public class Zombie : MonoBehaviour
 
     Player player;
 
-    ZombieMovement movement;
+    AIPath movement;
     Animator anim;
     Rigidbody2D rb;
 
@@ -42,7 +47,8 @@ public class Zombie : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
 
-        movement = GetComponent<ZombieMovement>();
+        // movement = GetComponent<ZombieMovement>();
+        movement = GetComponent<AIPath>();
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
 
@@ -119,14 +125,14 @@ public class Zombie : MonoBehaviour
         {
             case ZombieStates.STAND:
                 movement.enabled = false;
-                movement.StopMovement();
+                //movement.StopMovement();
                 break;
             case ZombieStates.MOVE:
                 movement.enabled = true;
                 break;
             case ZombieStates.ATTACK:
                 movement.enabled = false;
-                movement.StopMovement();
+               // movement.StopMovement();
                 break;
         }
     }

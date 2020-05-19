@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Lean.Pool;
+using System;
 
 public class Player : MonoBehaviour
 {
+    public Action OnDeath = delegate { };
+
     public int health = 100;
     public float fireRate;
     public GameObject bulletPrefab;
@@ -21,6 +24,7 @@ public class Player : MonoBehaviour
 
         if (health <= 0)
         {
+            OnDeath();
             Destroy(gameObject);
         }
     }
